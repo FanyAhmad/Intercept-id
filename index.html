@@ -8,10 +8,13 @@
   <title>INTERCEPT</title>
   <meta name="description" content="Studi surveilans transmisi resistensi antimikroba (AMR) multi-situs di Indonesia.">
 
-  <!-- Font dari Google Fonts -->
+  <!-- Font dari Google Fonts:
+       Inter        -> teks dan judul sans
+       Source Serif -> judul serif (hero dan planned impact)
+       IBM Plex Mono -> label kecil huruf kapital -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 
   <!-- File CSS: warna dan tata letak -->
   <link rel="stylesheet" href="style.css">
@@ -20,12 +23,13 @@
 
   <!-- 1. NAV BAR
        Tiap link mengarah ke id section di bawah (tanda #).
-       News dibuat halaman sendiri (news.html), jadi tidak ada section kosong di landing page. -->
+       News dibuat halaman sendiri (news.html), jadi tidak ada section kosong di landing page.
+       aria-current="page" menandai menu yang sedang aktif (diberi garis bawah lewat CSS). -->
   <header class="site-header">
-    <nav class="nav container">
-      <a href="#home" class="brand"><span class="brand-dot"></span>INTERCEPT</a>
+    <nav class="nav container" aria-label="Menu utama">
+      <a href="#home" class="brand">INTERCEPT</a>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" aria-current="page">Home</a></li>
         <li><a href="#project">Project</a></li>
         <li><a href="#resource">Resource</a></li>
         <li><a href="news.html">News</a></li>
@@ -36,177 +40,279 @@
 
   <main>
 
-    <!-- 2. HERO / PERKENALAN SINGKAT
-         Judul + 1-2 kalimat. Tanpa tombol project. -->
+    <!-- 2. HERO
+         Baris label kecil, nama besar, lalu dua kolom: teks pembuka dan diagram. -->
     <section id="home" class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow eyebrow-light">Surveilans AMR &middot; Indonesia</p>
-        <h1>Memahami dan memutus penularan bakteri resisten di rumah sakit</h1>
-        <p class="lead">
-          INTERCEPT adalah studi surveilans transmisi resistensi antimikroba (AMR) di beberapa
-          rumah sakit di Indonesia, dengan fokus pada bakteri Gram-negatif resisten karbapenem.
-        </p>
-        <ul class="hero-tags">
-          <li>3 rumah sakit studi</li>
-          <li>LSTM &times; FK Undip</li>
-          <li>Pencegahan dan pengendalian infeksi</li>
-        </ul>
+      <div class="container">
+
+        <div class="hero-meta">
+          <span>Kolaborasi riset resistensi antimikroba</span>
+          <span>Indonesia</span>
+        </div>
+
+        <div class="hero-mark">
+          <h1 class="wordmark">INTERCEPT</h1>
+          <p class="hero-kicker">Surveilans AMR<br>di rumah sakit</p>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-intro">
+            <h2 class="display">Memahami penularan.<br>Merancang pencegahan.</h2>
+            <p class="lead">
+              Studi surveilans transmisi resistensi antimikroba (AMR) di beberapa rumah
+              sakit di Indonesia, untuk memahami bagaimana bakteri Gram-negatif resisten
+              karbapenem menular dan bagaimana penularannya bisa diputus.
+            </p>
+          </div>
+
+          <!-- Diagram konseptual. Bingkai dan label dibuat dengan HTML + CSS,
+               gambar di tengah dengan SVG supaya tetap tajam di layar apa pun. -->
+          <figure class="diagram">
+            <div class="diagram-box">
+              <div class="diagram-meta">
+                <span>AMR / transmisi</span>
+                <span>Kerangka studi</span>
+              </div>
+
+              <svg class="diagram-svg" viewBox="0 0 440 120" role="img"
+                   aria-label="Diagram: jalur penularan antara pasien dan lingkungan, dipotong oleh intervensi PPI di tengah.">
+                <!-- Jalur penularan: satu garis lurus dan dua garis melengkung -->
+                <g fill="none" stroke="#122056" stroke-width="1.25" opacity="0.55">
+                  <path d="M40 60 H400"></path>
+                  <path d="M40 60 Q220 14 400 60"></path>
+                  <path d="M40 60 Q220 106 400 60"></path>
+                </g>
+                <!-- Palang PPI yang memotong jalur di tengah -->
+                <rect x="211" y="20" width="18" height="80" fill="#5B65DC"></rect>
+                <text x="220" y="60" transform="rotate(-90 220 60)" text-anchor="middle"
+                      dominant-baseline="central" fill="#FFFFFF"
+                      font-size="10" font-family="IBM Plex Mono, monospace" letter-spacing="1.5">PPI</text>
+                <!-- Dua ujung: pasien dan lingkungan -->
+                <circle cx="40" cy="60" r="9" fill="#122056"></circle>
+                <circle cx="400" cy="60" r="9" fill="#80CBC4"></circle>
+                <text x="40" y="90" text-anchor="middle" fill="#455A64"
+                      font-size="14" font-family="Inter, sans-serif">Pasien</text>
+                <text x="400" y="90" text-anchor="middle" fill="#455A64"
+                      font-size="14" font-family="Inter, sans-serif">Lingkungan</text>
+              </svg>
+
+              <p class="diagram-foot">Memahami jalur &rarr; memutus penularan</p>
+            </div>
+            <figcaption>Ilustrasi konseptual, bukan data hasil studi.</figcaption>
+          </figure>
+        </div>
+
       </div>
     </section>
 
-    <!-- 3. COMPANY PROFILE
-         Teks di kiri, kartu lokasi di kanan. Di HP keduanya bertumpuk.
+    <!-- 3. TENTANG KAMI
+         Dua kolom: judul di kiri, isi di kanan. Di HP keduanya bertumpuk.
          Foto ditaruh di assets/photo/ dan dipanggil lewat data-photo. -->
-    <section id="profil" class="section">
-      <div class="container profil-grid">
-        <div class="profil-text">
-          <p class="eyebrow">Tentang Kami</p>
-          <h2 class="section-title">Kolaborasi riset lintas negara</h2>
-          <p>
+    <section id="profil" class="section section-lavender">
+      <div class="container grid-2col">
+
+        <div class="col-label">
+          <p class="index-label">01 / Kolaborasi</p>
+          <h2>Tentang Kami</h2>
+        </div>
+
+        <div class="col-content">
+          <p class="big-text">
             INTERCEPT adalah kerja sama antara Liverpool School of Tropical Medicine (LSTM)
             dengan Fakultas Kedokteran Universitas Diponegoro dan RSUP Dr. Kariadi, Semarang.
-          </p>
-          <p>
-            Studi ini menelusuri jalur penularan bakteri Gram-negatif resisten karbapenem
-            di rumah sakit, lalu merancang intervensi pencegahan dan pengendalian infeksi (PPI)
+            Fokus studi ini adalah jalur penularan bakteri Gram-negatif resisten karbapenem
+            di rumah sakit, serta intervensi pencegahan dan pengendalian infeksi (PPI)
             yang dapat memutusnya.
           </p>
 
+          <div class="table-head">
+            <h3>Lokasi studi</h3>
+            <span class="meta-label">Jawa Tengah, Indonesia</span>
+          </div>
+          <ul class="site-list">
+            <li><span class="site-name">RSUP Dr. Kariadi</span><span class="site-city">Semarang</span></li>
+            <li><span class="site-name">RSD KRMT Wongsonegoro</span><span class="site-city">Semarang</span></li>
+            <li><span class="site-name">RSUD Dr. M. Ashari</span><span class="site-city">Pemalang</span></li>
+          </ul>
+
           <!-- Contoh foto (aktifkan kalau file sudah ada di assets/photo/):
-          <img data-photo="kegiatan-1.webp" alt="Kegiatan lapangan INTERCEPT" class="profil-photo">
+          <img data-photo="kegiatan-1.webp" alt="Kegiatan lapangan INTERCEPT" class="content-photo">
           -->
         </div>
 
-        <aside class="site-card">
-          <h3>Lokasi studi</h3>
-          <ol class="site-list">
-            <li><strong>RSUP Dr. Kariadi</strong><span>Semarang</span></li>
-            <li><strong>RSD KRMT Wongsonegoro</strong><span>Semarang</span></li>
-            <li><strong>RSUD Dr. M. Ashari</strong><span>Pemalang</span></li>
-          </ol>
-        </aside>
       </div>
     </section>
 
     <!-- 4. PROJECT / KOMPONEN STUDI
-         Kartu dalam grid. Nomor 01, 02, dst. ditulis manual.
+         Daftar bernomor, bukan kartu. Nomor 01, 02, dst. ditulis manual.
          Nanti bisa dibuat dari data/project.json lewat JavaScript. -->
-    <section id="project" class="section section-tint">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Project</p>
-          <h2 class="section-title">Komponen studi</h2>
+    <section id="project" class="section">
+      <div class="container grid-2col">
+
+        <div class="col-label">
+          <p class="index-label">02 / Komponen studi</p>
+          <h2>Project</h2>
+          <p class="note">Dari surveilans hingga perancangan intervensi PPI bersama.</p>
+          <span class="rule" aria-hidden="true"></span>
         </div>
 
-        <div class="project-grid">
-          <article class="project-card">
-            <span class="project-num">01</span>
-            <h3>Surveilans bakteremia dan isolat</h3>
-            <p>Pemantauan bakteri resisten dari kasus bakteremia dan pengelolaan isolat di laboratorium.</p>
-          </article>
-
-          <article class="project-card">
-            <span class="project-num">02</span>
-            <h3>Sampling lingkungan dan sampel pasien</h3>
-            <p>Swab lingkungan rumah sakit serta sampel rektal/feses untuk melacak jalur penularan.</p>
-          </article>
-
-          <article class="project-card">
-            <span class="project-num">03</span>
-            <h3>Audit kualitas antibiotik</h3>
-            <p>Penilaian kualitas penggunaan antibiotik di rumah sakit studi.</p>
-          </article>
-
-          <article class="project-card">
-            <span class="project-num">04</span>
-            <h3>Studi kualitatif</h3>
-            <p>Wawancara mendalam, diskusi kelompok terarah (FGD), dan observasi partisipan di ruang rawat.</p>
-          </article>
-
-          <article class="project-card">
-            <span class="project-num">05</span>
-            <h3>Observasi kepatuhan PPI</h3>
-            <p>Pengamatan kepatuhan kebersihan tangan dan penggunaan sarung tangan oleh tenaga kesehatan.</p>
-          </article>
-
-          <article class="project-card">
-            <span class="project-num">06</span>
-            <h3>Intervention Co-Design Workshop</h3>
-            <p>Lokakarya bersama pemangku kepentingan untuk merancang intervensi PPI yang sesuai konteks setempat.</p>
-          </article>
+        <div class="col-content">
+          <ol class="item-list">
+            <li>
+              <span class="item-num">01</span>
+              <div>
+                <h3>Surveilans bakteremia dan isolat</h3>
+                <p>Pemantauan bakteri resisten dari kasus bakteremia dan pengelolaan isolat di laboratorium.</p>
+              </div>
+            </li>
+            <li>
+              <span class="item-num">02</span>
+              <div>
+                <h3>Sampling lingkungan dan sampel pasien</h3>
+                <p>Swab lingkungan rumah sakit serta sampel rektal/feses untuk melacak jalur penularan.</p>
+              </div>
+            </li>
+            <li>
+              <span class="item-num">03</span>
+              <div>
+                <h3>Audit kualitas antibiotik</h3>
+                <p>Penilaian kualitas penggunaan antibiotik di rumah sakit studi.</p>
+              </div>
+            </li>
+            <li>
+              <span class="item-num">04</span>
+              <div>
+                <h3>Studi kualitatif</h3>
+                <p>Wawancara mendalam, diskusi kelompok terarah (FGD), dan observasi partisipan di ruang rawat.</p>
+              </div>
+            </li>
+            <li>
+              <span class="item-num">05</span>
+              <div>
+                <h3>Observasi kepatuhan PPI</h3>
+                <p>Pengamatan kepatuhan kebersihan tangan dan penggunaan sarung tangan oleh tenaga kesehatan.</p>
+              </div>
+            </li>
+            <li>
+              <span class="item-num">06</span>
+              <div>
+                <h3>Intervention Co-Design Workshop</h3>
+                <p>Lokakarya bersama pemangku kepentingan untuk merancang intervensi PPI yang sesuai konteks setempat.</p>
+              </div>
+            </li>
+          </ol>
         </div>
+
       </div>
     </section>
 
-    <!-- RESOURCE / PUBLIKASI
+    <!-- 5. RESOURCE / PUBLIKASI
          File PDF ditaruh di assets/file/ dan dipanggil lewat data-file (tulis nama file saja).
-         Link luar tetap pakai href biasa. Label kecil (PDF / Link) ditulis manual. -->
-    <section id="resource" class="section">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Resource</p>
-          <h2 class="section-title">Dokumen dan publikasi</h2>
+         Link luar tetap pakai href biasa.
+         Blok .notice dan tanda "Placeholder" dipakai selama isinya masih contoh.
+         Hapus keduanya kalau daftar sudah berisi dokumen asli. -->
+    <section id="resource" class="section section-white">
+      <div class="container grid-2col">
+
+        <div class="col-label">
+          <p class="index-label">03 / Dokumen</p>
+          <h2>Resource dan Publikasi</h2>
         </div>
 
-        <ul class="resource-list">
-          <li>
-            <a data-file="contoh-dokumen-v1.pdf" class="resource-item">
-              <span class="resource-type">PDF</span>
-              <span class="resource-title">Judul dokumen atau publikasi</span>
-              <span class="resource-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://example.org" target="_blank" rel="noopener" class="resource-item">
-              <span class="resource-type resource-type-link">Link</span>
-              <span class="resource-title">Judul paper atau dataset</span>
-              <span class="resource-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-        </ul>
+        <div class="col-content">
+          <p class="notice">
+            Daftar ini masih berupa draf. Entri di bawah adalah contoh placeholder,
+            bukan publikasi atau hasil studi yang telah tersedia.
+          </p>
+
+          <ul class="resource-list">
+            <li>
+              <a data-file="contoh-dokumen-v1.pdf" class="resource-item">
+                <span class="resource-type">PDF</span>
+                <span class="resource-text">
+                  <span class="resource-title">Judul dokumen atau publikasi (PDF)</span>
+                  <span class="resource-path">data/contoh-dokumen-v1.pdf</span>
+                </span>
+                <span class="resource-tag">Placeholder</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://example.org" target="_blank" rel="noopener" class="resource-item">
+                <span class="resource-type">URL</span>
+                <span class="resource-text">
+                  <span class="resource-title">Judul paper atau dataset</span>
+                  <span class="resource-path">https://example.org</span>
+                </span>
+                <span class="resource-tag">Placeholder</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
-    <!-- 5. PLANNED IMPACT
-         Singkat dan jelas. Teks di bawah ini draf, sesuaikan dengan versi resmi. -->
+    <!-- 6. PLANNED IMPACT
+         Teks di bawah ini draf, sesuaikan dengan versi resmi. -->
     <section id="impact" class="section section-mint">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Planned Impact</p>
-          <h2 class="section-title">Dampak yang direncanakan</h2>
+      <div class="container grid-2col">
+
+        <div class="col-label">
+          <p class="index-label">04 / Arah ke depan</p>
+          <h2>Planned Impact</h2>
+          <p class="note">Dampak yang direncanakan, bukan capaian hasil studi.</p>
         </div>
 
-        <ul class="impact-list">
-          <li>Pemahaman yang lebih jelas tentang jalur penularan bakteri resisten karbapenem di rumah sakit Indonesia.</li>
-          <li>Intervensi PPI yang dirancang bersama pelaku di lapangan.</li>
-          <li>Peningkatan kapasitas laboratorium dan tenaga peneliti lewat transfer pengetahuan.</li>
-        </ul>
+        <div class="col-content">
+          <ol class="impact-list">
+            <li>
+              <span class="item-num">01</span>
+              <p>Pemahaman yang lebih jelas tentang jalur penularan bakteri resisten karbapenem di rumah sakit Indonesia.</p>
+            </li>
+            <li>
+              <span class="item-num">02</span>
+              <p>Intervensi PPI yang dirancang bersama pelaku di lapangan.</p>
+            </li>
+            <li>
+              <span class="item-num">03</span>
+              <p>Peningkatan kapasitas laboratorium dan tenaga peneliti lewat transfer pengetahuan.</p>
+            </li>
+          </ol>
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- 6. FOOTER
-       Kontak, institusi, sosial media, logo mitra. Semua isi di bawah masih placeholder. -->
+  <!-- 7. FOOTER
+       Kontak, institusi, sosial media, logo mitra. Isi di bawah masih placeholder. -->
   <footer id="kontak" class="site-footer">
     <div class="container footer-grid">
+
       <div>
-        <a href="#home" class="brand brand-light"><span class="brand-dot"></span>INTERCEPT</a>
-        <p>Fakultas Kedokteran Universitas Diponegoro<br>Semarang, Indonesia</p>
+        <a href="#home" class="brand brand-light">INTERCEPT</a>
+        <p class="footer-note">Kolaborasi riset AMR<br>di rumah sakit Indonesia.</p>
       </div>
 
       <div>
         <h2>Contact</h2>
-        <p><a href="mailto:email@contoh.id">email@contoh.id</a></p>
+        <p>Fakultas Kedokteran<br>Universitas Diponegoro, Semarang</p>
+        <p class="footer-mail">
+          <a href="mailto:email@contoh.id">email@contoh.id</a>
+          <span class="footer-tag">Draf / Placeholder</span>
+        </p>
       </div>
 
       <div>
-        <h2>Sosial media</h2>
+        <h2>Media sosial</h2>
         <p>
           <a href="#">Instagram</a><br>
           <a href="#">LinkedIn</a>
         </p>
+        <p class="footer-tag footer-tag-plain">Tautan placeholder</p>
       </div>
+
     </div>
 
     <!-- Logo mitra:
@@ -217,7 +323,8 @@
     -->
 
     <div class="container footer-bottom">
-      <small>&copy; 2026 INTERCEPT</small>
+      <span>&copy; 2026 INTERCEPT</span>
+      <span>Resistensi antimikroba / Pencegahan &amp; pengendalian infeksi</span>
     </div>
   </footer>
 
