@@ -1,0 +1,22 @@
+{
+  "kegiatan": [
+    {
+      "nama": "Nama Kegiatan",
+      "foto": [
+        "kegiatan-1/foto-1.webp",
+        "kegiatan-1/foto-2.webp",
+        "kegiatan-1/foto-3.webp",
+        "kegiatan-1/foto-4.webp"
+      ]
+    },
+    {
+      "nama": "Nama Kegiatan 2",
+      "foto": [
+        "kegiatan-2/foto-1.webp",
+        "kegiatan-2/foto-2.webp",
+        "kegiatan-2/foto-3.webp",
+        "kegiatan-2/foto-4.webp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- Bagian head: sama seperti index.html -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | INTERCEPT</title>
+  <meta name="description" content="Dokumentasi kegiatan INTERCEPT.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV BAR
+       Di halaman ini link ke section landing page harus ditulis lengkap
+       (index.html#project), karena #project tidak ada di news.html.
+       aria-current="page" menandai menu yang sedang aktif. -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Menu utama">
+      <a href="index.html" class="brand">INTERCEPT</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#project">Project</a></li>
+        <li><a href="index.html#resource">Resource</a></li>
+        <li><a href="news.html" aria-current="page">News</a></li>
+        <li><a href="#kontak">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section section-white news-page">
+      <div class="container">
+
+        <h1 class="page-title">News</h1>
+
+        <!-- Isi bagian ini dibuat oleh js/news.js dari data/news.json.
+             Teks "Memuat..." ditimpa begitu data selesai dimuat. -->
+        <div id="news-list" class="news-list" aria-live="polite">
+          <p class="news-status">Memuat kegiatan...</p>
+        </div>
+
+        <!-- Hanya tampil kalau JavaScript dimatikan di browser -->
+        <noscript>
+          <p class="news-status">Halaman ini memerlukan JavaScript untuk menampilkan daftar kegiatan.</p>
+        </noscript>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (sama dengan index.html, isi masih placeholder) -->
+  <footer id="kontak" class="site-footer">
+    <div class="container footer-grid">
+
+      <div>
+        <a href="index.html" class="brand brand-light">INTERCEPT</a>
+        <p class="footer-note">Kolaborasi riset AMR<br>di rumah sakit Indonesia.</p>
+      </div>
+
+      <div>
+        <h2>Contact</h2>
+        <p>Fakultas Kedokteran<br>Universitas Diponegoro, Semarang</p>
+        <p class="footer-mail">
+          <a href="mailto:email@contoh.id">email@contoh.id</a>
+          <span class="footer-tag">Draf / Placeholder</span>
+        </p>
+      </div>
+
+      <div>
+        <h2>Media sosial</h2>
+        <p>
+          <a href="#">Instagram</a><br>
+          <a href="#">LinkedIn</a>
+        </p>
+        <p class="footer-tag footer-tag-plain">Tautan placeholder</p>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; 2026 INTERCEPT</span>
+      <span>Resistensi antimikroba / Pencegahan &amp; pengendalian infeksi</span>
+    </div>
+  </footer>
+
+  <!-- URUTAN PENTING: main.js dulu, baru news.js.
+       news.js memakai fungsi assetPath() yang ada di main.js.
+       Dengan "defer", urutan penulisan di sini yang dipakai. -->
+  <script src="js/main.js" defer></script>
+  <script src="js/news.js" defer></script>
+
+</body>
+</html>
