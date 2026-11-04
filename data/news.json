@@ -1,21 +1,18 @@
 {
   "kegiatan": [
     {
-      "nama": "Nama Kegiatan",
+      "nama": "Enviromental Swabbing",
       "foto": [
-        "kegiatan-1/foto-1.webp",
-        "kegiatan-1/foto-2.webp",
-        "kegiatan-1/foto-3.webp",
-        "kegiatan-1/foto-4.webp"
+        "IMG_1529.webp",
+        "IMG_1532.webp",
+        "IMG_1534.webp"
       ]
     },
     {
-      "nama": "Nama Kegiatan 2",
+      "nama": "Patient Swabbing",
       "foto": [
-        "kegiatan-2/foto-1.webp",
-        "kegiatan-2/foto-2.webp",
-        "kegiatan-2/foto-3.webp",
-        "kegiatan-2/foto-4.webp"
+        "PatientSwabbing1.webp",
+        "PatientSwabbing2.webp"
       ]
     }
   ]
